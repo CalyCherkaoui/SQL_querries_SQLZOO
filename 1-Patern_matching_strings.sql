@@ -46,3 +46,27 @@ WHERE  name LIKE '%oo%';
 /* 7 - Bahamas has three a - who else?
 Find the countries that have three or more a in the name */
 
+SELECT name
+FROM   world
+WHERE  name LIKE '%a%a%a%';
+
+/* 8 - Find the countries that have "t" as the second character.*/
+
+SELECT name
+FROM   world
+WHERE  name LIKE '_t%'
+ORDER  BY name;
+
+/* 9 - Find the countries that have exactly four characters */
+
+SELECT name
+FROM   world
+WHERE  name LIKE '____';
+
+/* 10 - The capital of Luxembourg is Luxembourg.
+Show all the countries where the capital is the same as the name of the country
+Find the country where the name is the capital city.*/
+
+SELECT name
+FROM   world
+WHERE  name = capital;
