@@ -70,3 +70,21 @@ Find the country where the name is the capital city.*/
 SELECT name
 FROM   world
 WHERE  name = capital;
+
+/* 11 - The capital of Mexico is Mexico City. Show all the countries where the 
+capital has the country together with the word "City".
+Find the country where the capital is the country plus "City".
+The concat function
+The function concat is short for concatenate - you can use it to combine two or
+more strings. */
+
+SELECT name
+FROM   world
+WHERE  capital LIKE concat(name, ' City');
+
+/* 12 - Find the capital and the name where the capital includes the name of 
+the country. */
+
+SELECT capital , name
+FROM   world
+WHERE  capital LIKE concat('%', name, '%')
