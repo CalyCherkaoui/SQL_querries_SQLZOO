@@ -49,7 +49,40 @@ Show all details of the presidential winners:
 
 SELECT yr, subject, winner
   FROM nobel
-  AND winner IN ('Theodore Roosevelt',
+ WHERE winner IN ('Theodore Roosevelt',
                   'Woodrow Wilson',
                   'Jimmy Carter',
                   'Barack Obama');
+
+/* 7 - Show the winners with first name John */
+
+SELECT winner
+  FROM nobel
+ WHERE winner LIKE 'John %';
+
+/* 9 - Exclude Chemists and Medics
+Show the year, subject, and name of winners for 1980 excluding Chemistry and Medicine*/
+
+SELECT yr, subject, winner
+  FROM nobel
+ WHERE subject NOT LIKE 'Chemistry'
+   AND subject NOT LIKE 'Medicine'
+   AND yr = 1980;
+
+/* 11 - Non-ASCII characters
+Find all details of the prize won by PETER GRÜNBERG */
+
+SELECT *
+  FROM nobel
+ WHERE winner LIKE 'PETER GRÜNBERG';
+
+/* 12 - Single quotes
+Find all details of the prize won by EUGENE O'NEILL
+Escaping single quotes
+You can't put a single quote in a quote string directly. You can use two single quotes 
+within a quoted string.*/
+
+SELECT *
+  FROM nobel
+ WHERE winner LIKE 'EUGENE O''NEILL';
+
