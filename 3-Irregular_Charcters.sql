@@ -47,8 +47,8 @@ Show all details of the presidential winners:
     Jimmy Carter
     Barack Obama */
 
-SELECT * FROM nobel
- WHERE yr = 1970
+SELECT yr, subject, winner
+  FROM nobel
   AND winner IN ('Theodore Roosevelt',
                   'Woodrow Wilson',
                   'Jimmy Carter',
