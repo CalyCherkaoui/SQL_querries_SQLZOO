@@ -148,6 +148,17 @@ mdate	        team1	score1	team2	score2
 10 June 2012	IRL	  1	      CRO	  3
 Notice in the query given every goal is listed. If it was a team1 goal then a 1 appears
  in score1, otherwise there is a 0. You could SUM this column to get a count of the 
- goals scored by team1. Sort your result by mdate, matchid, team1 and team2.*/
+ goals scored by team1. Sort your result by mdate, matchid, team1 and team2.
+
+exp of CASE WHEN
+SELECT name, population
+      ,CASE WHEN population<1000000 
+            THEN 'small'
+            WHEN population<10000000 
+            THEN 'medium'
+            ELSE 'large'
+       END
+  FROM bbc
+*/
 
 
