@@ -1,5 +1,9 @@
 /*                      Tuto 7 - JOIN OPERATION.                     */
 /*                                                                   */
+-- Table movie (id 	title 	yr 	director 	budget 	gross)
+-- Table actor (id 	name)
+-- Table casting(movieid 	actorid 	ord)
+
 /* https://napier.sqlzoo.net/wiki/More_JOIN_operations               */
 /* *******************************************************************/
 
