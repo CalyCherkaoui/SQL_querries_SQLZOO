@@ -1,7 +1,7 @@
 /*                     Tuto 6 -JOIN.                                 */
 /*                                                                   */
 /* Table game(it, mdate, stadium, team1, team2)                      */
-/*  Using JOIN ON , CASE WHENE.*/
+/*  Using JOIN ON , CASE WHENE, LEFT JOIN*/
 /* https://napier.sqlzoo.net/wiki/The_JOIN_operation                 */
 /* *******************************************************************/
 
@@ -160,5 +160,20 @@ SELECT name, population
        END
   FROM bbc
 */
+
+SELECT mdate, team1, 
+      SUM(CASE WHEN team1=teamid
+             THEN 1
+             ELSE 0
+             END   ) score1,
+       team2,
+      SUM(CASE WHEN team2=teamid
+             THEN 1
+             ELSE 0
+              END  ) score2
+  FROM game
+  LEFT JOIN goal
+    ON matchid = id
+ GROUP BY mdate, matchid, team2, team1;
 
 
