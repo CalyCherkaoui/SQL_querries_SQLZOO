@@ -1,7 +1,7 @@
 /*                     Tuto 6 -JOIN.                                 */
 /*                                                                   */
 /* Table game(it, mdate, stadium, team1, team2)                      */
-/*  Using SUM, Count, MAX, DISTINCT and ORDER BY GROUP BY and HAVING.*/
+/*  Using JOIN ON , CASE WHENE.*/
 /* https://napier.sqlzoo.net/wiki/The_JOIN_operation                 */
 /* *******************************************************************/
 
@@ -94,17 +94,51 @@ Select goals scored only by non-German players in matches where GER was the id o
 You can use teamid!='GER' to prevent listing German players.
 You can use DISTINCT to stop players being listed twice.*/
 
+SELECT DISTINCT(player)
+  FROM goal 
+  JOIN game 
+    ON matchid = id 
+ WHERE teamid!= 'GER'
+   AND (game.team1 = 'GER' OR game.team2 = 'GER');
+
 /* 9 -
 Show teamname and the total number of goals scored.
 COUNT and GROUP BY*/
 
+SELECT teamname, COUNT(teamid)
+  FROM eteam 
+  JOIN goal
+    ON teamid = id
+ GROUP BY teamname;
+
 /* 10 - Show the stadium and the number of goals scored in each stadium. */
+
+SELECT stadium, COUNT(teamid)
+  FROM game
+  JOIN goal
+    ON game.id = goal.matchid
+ GROUP BY stadium;
 
 /* 11 -
 For every match involving 'POL', show the matchid, date and the number of goals scored.*/
 
-/* 12 - or every match where 'GER' scored, show matchid, match date and the number of
+SELECT matchid, mdate, COUNT(teamid)
+  FROM goal
+  JOIN game
+    ON id = matchid
+ WHERE (game.team2='POL' OR game.team1='POL')
+GROUP BY matchid, mdate;
+
+/* 12 - For every match where 'GER' scored, show matchid, match date and the number of
  goals scored by 'GER'*/
+
+SELECT matchid, mdate, COUNT(teamid)
+  FROM goal
+  JOIN game
+    ON id = matchid
+ WHERE teamid='GER'
+GROUP BY matchid, mdate;
+
 
 /* 13 - List every match with the goals scored by each team as shown. This will use 
 "CASE WHEN" which has not been explained in any previous exercises.
