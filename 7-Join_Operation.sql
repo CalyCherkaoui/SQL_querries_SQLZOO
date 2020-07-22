@@ -171,5 +171,3 @@ SELECT title, COUNT(casting.actorid) as num_actors
  ORDER BY num_actors DESC;
 
 /* 15 - List all the people who have worked with 'Art Garfunkel'. */
-
-
