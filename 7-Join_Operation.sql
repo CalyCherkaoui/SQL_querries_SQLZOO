@@ -30,6 +30,10 @@ SELECT id, title, yr
 
 /* 4 - What id number does the actor 'Glenn Close' have? */
 
+SELECT id
+  FROM actor
+ WHERE name LIKE 'Glenn Close';
+
 /* 5 - What is the id of the film 'Casablanca' */
 
 /* 6 - Obtain the cast list for 'Casablanca'.
