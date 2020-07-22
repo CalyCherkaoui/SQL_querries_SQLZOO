@@ -167,7 +167,20 @@ SELECT title, COUNT(casting.actorid) as num_actors
  JOIN movie
    ON movie.id = casting.movieid
  WHERE movie.yr = 1978
- GROUP BY movie.id
- ORDER BY num_actors DESC;
+ GROUP BY movie.id, title
+ ORDER BY num_actors DESC , movie.title ASC;
 
 /* 15 - List all the people who have worked with 'Art Garfunkel'. */
+
+SELECT name
+  FROM actor
+  JOIN casting ON casting.actorid = actor.id
+ WHERE casting.movieid IN
+                       (SELECT movieid
+                          FROM casting
+                          JOIN actor
+                            ON casting.actorid = actor.id
+                         WHERE actor.name LIKE 'Art Garfunkel')
+   AND actor.name NOT LIKE 'Art Garfunkel';
+
+
