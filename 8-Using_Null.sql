@@ -53,12 +53,35 @@ LEFT JOIN dept ON dept.id = teacher.dept;
 
 /* 7 - Use COUNT to show the number of teachers and the number of mobile phones*/
 
+SELECT COUNT(teacher.name), COUNT(teacher.mobile)
+FROM teacher;
+
 /* 8 - Use COUNT and GROUP BY dept.name to show each department and the number of
  staff. Use a RIGHT JOIN to ensure that the Engineering department is listed. */
 
+SELECT dept.name, COUNT(teacher.name)
+FROM teacher
+RIGHT JOIN dept 
+  ON dept.id = teacher.dept
+GROUP BY dept.name;
+
 /* 9 - Use CASE to show the name of each teacher followed by 'Sci' if the teacher is 
-in dept 1 or 2 and 'Art' otherwise. 
+in dept 1 or 2 and 'Art' otherwise.*/
+
+SELECT (CASE WHEN teacher.dept=1 OR teacher.dept=2
+                  THEN CONCAT('Sci ',teacher.name)
+             ELSE 
+                  CONCAT('Art ',teacher.name)
+        END) name
+  FROM teacher;
 
 /* 10 - Use CASE to show the name of each teacher followed by 'Sci' if the teacher 
 is in dept 1 or 2, show 'Art' if the teacher's dept is 3 and 'None' otherwise. */
 
+SELECT name, (CASE WHEN teacher.dept=1 OR teacher.dept=2
+                        THEN 'Sci'
+                   WHEN teacher.dept=3
+                        THEN 'Art '
+                   ELSE 'None'
+              END) cas
+  FROM teacher;
